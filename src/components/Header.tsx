@@ -33,6 +33,12 @@ const Header = () => {
               Services
             </button>
             <button
+              onClick={() => scrollToSection("colleges")}
+              className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors"
+            >
+              Colleges
+            </button>
+            <button
               onClick={() => scrollToSection("contact")}
               className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors"
             >
@@ -66,6 +72,12 @@ const Header = () => {
                 className="text-left text-sm font-medium text-muted-foreground hover:text-foreground transition-colors py-2"
               >
                 Services
+              </button>
+              <button
+                onClick={() => scrollToSection("colleges")}
+                className="text-left text-sm font-medium text-muted-foreground hover:text-foreground transition-colors py-2"
+              >
+                Colleges
               </button>
               <button
                 onClick={() => scrollToSection("contact")}
