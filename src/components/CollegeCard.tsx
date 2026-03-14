@@ -2,6 +2,7 @@ import { Card, CardContent, CardHeader } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { MapPin, Star, Plus, Eye } from "lucide-react";
+import { useNavigate } from "react-router-dom";
 import { College } from "@/data/colleges";
 
 interface CollegeCardProps {
@@ -12,6 +13,8 @@ interface CollegeCardProps {
 }
 
 const CollegeCard = ({ college, onViewDetails, onCompare, isInCompare }: CollegeCardProps) => {
+  const navigate = useNavigate();
+
   const formatFee = (fee: number) => {
     return new Intl.NumberFormat("en-IN", {
       style: "currency",
@@ -22,6 +25,11 @@ const CollegeCard = ({ college, onViewDetails, onCompare, isInCompare }: College
 
   const lowestFee = Math.min(...college.courses.map((c) => c.fee));
   const highestFee = Math.max(...college.courses.map((c) => c.fee));
+
+  const handleViewDetails = () => {
+    // Navigate to the full page details
+    navigate(`/student/college/${college.id}`);
+  };
 
   return (
     <Card className="overflow-hidden hover:shadow-lg transition-shadow duration-300 border-border/50">
@@ -74,7 +82,7 @@ const CollegeCard = ({ college, onViewDetails, onCompare, isInCompare }: College
             variant="outline"
             size="sm"
             className="flex-1"
-            onClick={() => onViewDetails(college)}
+            onClick={handleViewDetails}
           >
             <Eye className="w-4 h-4 mr-1" />
             View Details
